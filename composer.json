@@ -1,0 +1,16 @@
+{
+    "name": "tangible/ld-groups",
+    "description": "Internal Plugin. Allow us to use Beaver Themer with the Student Group post type",
+    "license": "GPLv2 or later",
+    "authors": [
+        {
+            "name": "Tangible Team"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": { 
+            "Tangible\\LDGroups\\": "./inc" 
+        }
+    }
+}
