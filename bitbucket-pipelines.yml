@@ -1,0 +1,40 @@
+image: php:7.1.1
+pipelines:
+  default:
+    - step:
+        script:
+          - apt-get update && apt-get install -y zip git
+          # Install composer and project module dependencies
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer install
+          # Copy project folder to be zipped: build -> plugin name
+          - cd $BITBUCKET_CLONE_DIR && cd ..
+          - cp -r build $BITBUCKET_REPO_SLUG
+          # Create zip package
+          - export ZIP_NAME=$BITBUCKET_REPO_SLUG-latest.zip
+          - zip -r $ZIP_NAME $BITBUCKET_REPO_SLUG -x "**/*node_modules*" "**/*.git*" "**/_*" "**/.hardlinks" "*pipelines.yml" "**/.gitignore" "**/composer.json" "**/composer.lock" "**/*sources*" "**/*.sass-cache*" "**/.babelrc" "**/package.json" "**/package-lock.json" "**/README.md"
+          - echo "Created $ZIP_NAME"
+          - ls -la
+          # Deploy to Downloads
+          - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"$ZIP_NAME"
+  tags:
+    '*':
+      - step:
+          script:
+            #
+            # Same as above, but with BITBUCKET_TAG instead of BITBUCKET_COMMIT
+            #
+            - apt-get update && apt-get install -y zip git
+            # Install composer and project module dependencies
+            - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+            - composer install
+            # Copy project folder to be zipped: build -> plugin name
+            - cd $BITBUCKET_CLONE_DIR && cd ..
+            - cp -r build $BITBUCKET_REPO_SLUG
+            # Create zip package
+            - export ZIP_NAME=$BITBUCKET_REPO_SLUG-$BITBUCKET_TAG.zip
+            - zip -r $ZIP_NAME $BITBUCKET_REPO_SLUG -x "**/*node_modules*" "**/*.git*" "**/_*" "**/.hardlinks" "*pipelines.yml" "**/.gitignore" "**/composer.json" "**/composer.lock" "**/*sources*" "**/*.sass-cache*" "**/.babelrc" "**/package.json" "**/package-lock.json" "**/README.md"
+            - echo "Created $ZIP_NAME"
+            - ls -la
+            # Deploy to Downloads
+            - curl -X POST "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"$ZIP_NAME"
