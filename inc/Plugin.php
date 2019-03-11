@@ -82,10 +82,10 @@ Class Plugin
 		 * Normally this is useless, but if for some reason the redirection is not working,
 		 * wer are not displaying the content
 		 */
-	 	add_filter( 'the_content', function() {
+	 	add_filter( 'the_content', function( $content ) {
 
     		if ( is_singular( 'groups' ) ) {
-
+    			
 	 			$group_id = (int) get_queried_object_id();
 
         		if( !$this->user->is_in_group( $group_id ) ) {
