@@ -27,6 +27,21 @@ Class Plugin
 
 
 	/**
+	 * Get the restriction type (redirection, 404, ....)
+	 * 
+	 * @return string 
+	 */
+	private function get_restriction_type() {
+
+		// Possible value : home or 404
+		$restriction = '404';
+
+		return $restriction;
+	}
+
+
+
+	/**
 	 * Set student group to public
 	 */
 	private function set_groups_to_public() {
@@ -68,9 +83,27 @@ Class Plugin
 	 			$group_id = (int) get_queried_object_id();
 
         		if( !$this->user->is_in_group( $group_id ) ) {
-					$url = (string) get_home_url();
-        			wp_safe_redirect( $url, 302, 'WordPress' );
-        			exit();
+
+        			switch( $this->get_restriction_type() ) {
+        				
+        				case 'home':
+							$url = (string) get_home_url();
+		        			wp_safe_redirect( $url, 302, 'WordPress' );
+		        			exit();
+        					break;
+        				
+        				case '404':
+							global $wp_query;
+  							$wp_query->set_404();
+  							status_header( 404 );
+  							get_template_part( 404 );
+  							exit();
+        					break;
+
+        				default:
+        					
+        					break;
+        			}
         		}
         		
         	}
