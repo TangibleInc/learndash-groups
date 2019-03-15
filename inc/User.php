@@ -4,9 +4,12 @@ namespace Tangible\LDGroups;
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
+
+/**
+ * User model
+ */
 Class User 
 {
-
 
 	/**
 	 * Construct
