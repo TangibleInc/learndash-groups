@@ -1,9 +1,14 @@
-image: php:7.1.1
+image: php:7.3.3
 pipelines:
   default:
     - step:
         script:
-          - apt-get update && apt-get install -y zip git
+          # Register Debian package repository archive, for forward compatibility
+          - echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+          - sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
+          - apt-get -o Acquire::Check-Valid-Until=false update
+          # Install git, zip
+          - apt-get install -y zip git
           # Install composer and project module dependencies
           - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
           - composer install
@@ -24,7 +29,12 @@ pipelines:
             #
             # Same as above, but with BITBUCKET_TAG instead of BITBUCKET_COMMIT
             #
-            - apt-get update && apt-get install -y zip git
+            # Register Debian package repository archive, for forward compatibility
+            - echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+            - sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
+            - apt-get -o Acquire::Check-Valid-Until=false update
+            # Install git, zip
+            - apt-get install -y zip git
             # Install composer and project module dependencies
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
             - composer install
