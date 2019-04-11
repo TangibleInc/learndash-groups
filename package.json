@@ -1,0 +1,23 @@
+{
+  "name": "ld-groups",
+  "version": "1.0.0",
+  "description": "Internal Plugin. Allow us to use Beaver Themer with the Student Group post type.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nicolasjaussaud@bitbucket.org/tangibleinc/ld-groups.git"
+  },
+  "author": "Tangible Team",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/tangibleinc/ld-groups#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.1.6",
+    "babel-cli": "^6.26.0"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "npm-sass": "^2.3.0"
+  }
+}
