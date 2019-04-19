@@ -22,7 +22,7 @@ Class FieldConnections
 		add_action( 'init', function() {
 
 			// Only if BeaverBuilder is activate 
-			if( class_exists( 'FLBuilder' ) )
+			if( class_exists( '\FLBuilder' ) )
 				$this->register_fields_connection(); 
 		
 		});
