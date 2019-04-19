@@ -2,7 +2,7 @@
 /**
  * Plugin Name: LearnDash Groups
  * Plugin URI: https://tangibleplugins.com
- * Description: Allow us to use Beaver Themer with the Student Group post type and add a picture and a banner field connection for student group
+ * Description: Allow the use of Beaver Themer with LearnDash Student Groups and create pictures / banners fields connections for each student groups
  * Version: 0.0.0
  * Author: Team Tangible
  * Author URI: https://teamtangible.com/
