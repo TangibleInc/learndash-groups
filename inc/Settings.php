@@ -18,32 +18,7 @@ Class Settings
 	 * Constructor
 	 */
 	public function __construct() {
-
-		$this->add_menu();
-		$this->register_settings(); 
-	}
-
-
-
-	/**
-	 * Register the options for our settings 
-	 */
-	private function register_settings() {
-		register_setting( 'ld-groups-settings', 'ld-groups-redirection-type' );
-	}
-
-
-
-	/**
-	 * Add the settings page 
-	 */
-	private function add_menu() {
-		
-		add_action('admin_menu', function() {
-		
-			add_options_page('LearnDash Group Visibility', 'LearnDash Group Visibility', 'manage_options', 'ldgroupvisibility', array( $this, 'get_page' ) );
-		
-		} );
+ 
 	}
 
 
@@ -55,7 +30,7 @@ Class Settings
 	 */
 	public function get_page() {
 		
-		$restriction = get_option( 'ld-groups-redirection-type', true );
+		$restriction = get_option( 'ldg-redirection-type', '404' );
 
 		ob_start();
 		require TangibleGroups_DIR . 'template/admin/settings.php';

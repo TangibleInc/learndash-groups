@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Tangible Groups for LearnDash
+ * Plugin Name: LearnDash Groups
  * Plugin URI: https://tangibleplugins.com
- * Description: Internal Plugin. Allow us to use Beaver Themer with the Student Group post type
+ * Description: Allow us to use Beaver Themer with the Student Group post type and add a picture and a banner field connection for student group
  * Version: 0.0.0
  * Author: Team Tangible
  * Author URI: https://teamtangible.com/
@@ -24,6 +24,10 @@ define( 'TangibleGroups_PATH', plugin_basename( __FILE__ ) );
 
 // Composer
 require_once __DIR__ . '/vendor/autoload.php';
+
+// Internal framework
+require_once __DIR__ . '/vendor/tangible/plugin-framework/index.php';
+
 
 use Tangible\LDGroups\Plugin;
 

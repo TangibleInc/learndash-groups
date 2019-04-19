@@ -7,6 +7,7 @@ defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
 /**
  * This class register field connections for Beaver Themer
+ * 
  * https://www.wpbeaverbuilder.com/beaver-themer/
  */
 Class FieldConnections
@@ -20,7 +21,9 @@ Class FieldConnections
 		
 		add_action( 'init', function() {
 
-			$this->register_fields_connection(); 
+			// Only if BeaverBuilder is activate 
+			if( class_exists( 'FLBuilder' ) )
+				$this->register_fields_connection(); 
 		
 		});
 
