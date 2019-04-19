@@ -18,7 +18,17 @@ Class Settings
 	 * Constructor
 	 */
 	public function __construct() {
- 
+
+	}
+
+
+
+	/**
+	 * Register the settings options (call in the Plugin class)
+	 */
+	public function register_settings() {
+
+ 		register_setting( 'ldg-settings', 'ldg-redirection-type' );
 	}
 
 
@@ -28,7 +38,7 @@ Class Settings
 	 *  
 	 * @return string
 	 */
-	public function get_page() {
+	public function get_view() {
 		
 		$restriction = get_option( 'ldg-redirection-type', '404' );
 

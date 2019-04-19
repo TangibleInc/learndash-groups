@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 /**
  * Handle the logic in the admin part of wordpress
  */
-Class GroupAccess
+Class Admin
 {
 
 

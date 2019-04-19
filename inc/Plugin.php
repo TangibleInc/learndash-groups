@@ -34,8 +34,26 @@ Class Plugin
 
 		// Register field connections
 		new FieldConnections();
+
+		// Get the settings
+		$this->settings = new Settings();
+
+		// Register fileds
+		$this->register_fields();
 	}
 	
+
+
+	/**
+	 * Register all the fields of the plugin
+	 */
+	private function register_fields() {
+
+		add_action( 'init', function() {
+			$this->settings->register_settings();
+		} );
+	}
+
 
 
 	/**
@@ -91,10 +109,9 @@ Class Plugin
 		  	// Tabs in settings page
 		  	'setting_tabs' => [
 		    	'settings' => [
-		      		'title' 	=> 'Documentation',
+		      		'title' 	=> __( 'Settings', 'ld-groups' ),
 		      		'callback' 	=> function () {
-						$settings = new Settings();
-						$settings->get_view();
+						$this->settings->get_view();
 		      		},
 		    	],
 		  	],
@@ -110,15 +127,15 @@ Class Plugin
 			    ?>
 			    	<div class="notice notice-info is-dismissible">
 			      		<p>Welcome to <?= $plugin['title'] ?>! Make sure to take a look at our list of recommended plugins.</p>
-			      		<p><a href="<?= framework\get_settings_page_url($plugin, 'recommend') ?>">See our recommendations &raquo;</a></p>
+			      		<p><a href="<?= PluginFramework\get_settings_page_url($plugin, 'recommend') ?>">See our recommendations &raquo;</a></p>
 			    	</div>
 			    <?php
 
-			    if (!framework\has_valid_license($plugin)) {
+			    if (!PluginFramework\has_valid_license($plugin)) {
 			    
 			    	?>
 			      		<div class="notice notice-error">
-			        		<p>Please <a href="<?= framework\get_settings_page_url($plugin, 'license') ?>">enter your license key</a> to enable plugin updates for <?= $plugin['title'] ?>.</p>
+			        		<p>Please <a href="<?= PluginFramework\get_settings_page_url($plugin, 'license') ?>">enter your license key</a> to enable plugin updates for <?= $plugin['title'] ?>.</p>
 			      		</div>
 			      	<?php
 			    }
