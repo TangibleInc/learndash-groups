@@ -58,6 +58,9 @@ Class Admin
 		 */
 		add_action( 'save_post', function( $post_id ) {
 
+			if( empty($_POST) || !array_key_exists( 'ld-group-pictures', $_POST ) )
+				return $post_id;
+
 			if( !wp_verify_nonce( $_POST['ld-group-pictures'], 'save_post' ) )
 				return $post_id;
 
@@ -65,9 +68,8 @@ Class Admin
 				return $post_id;
 
 			// Check permissions to edit pages and/or posts
-			if ( 'groups' !== $_POST['post_type'] ) {
+			if( 'groups' !== $_POST['post_type'] )
 				return $post_id;
-			} 
 
 			$group = new StudentGroup( $post_id );
 			$group->save_picture();
