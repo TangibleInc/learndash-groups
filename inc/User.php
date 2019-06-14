@@ -18,8 +18,15 @@ Class User
 	 */
 	public function __construct() {
 
-		$id = get_current_user_id();
-		$this->set_id( $id );	
+
+		add_action( 'init', function() {
+
+			$id = get_current_user_id();
+			$this->set_id( $id );	
+
+		} );
+
+		
 	}
 
 
