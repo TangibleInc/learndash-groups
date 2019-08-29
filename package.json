@@ -1,6 +1,9 @@
 {
   "name": "ld-groups",
-  "version": "1.0.0",
+  "title": "Tangible Groups for LearnDash",
+  "productId": false,
+  "multisite": false,
+  "private": true,
   "description": "Internal Plugin. Allow us to use Beaver Themer with the Student Group post type.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

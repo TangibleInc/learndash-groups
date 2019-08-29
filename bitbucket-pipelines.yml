@@ -1,5 +1,5 @@
 # This uses a consolidated script from http://bitbucket.org/tangibleinc/tangible-pipeline
-image: php:7.3.3
+image: php:7.3.8-fpm
 pipelines:
   # On every commit
   default:
@@ -11,8 +11,4 @@ pipelines:
     "*":
       - step:
           script:
-            # Define target on the deploy system:
-            # For themes, replace "plugins" with "themes"
-            # To disable, put # at the start of next line to make it a comment
-            - export DEPLOY_SYSTEM_TARGET=plugins/$BITBUCKET_REPO_SLUG
             - curl -s -L "https://${BB_AUTH_STRING}@api.bitbucket.org/2.0/repositories/tangibleinc/tangible-pipeline/downloads/run" > run && chmod +x run && ./run
