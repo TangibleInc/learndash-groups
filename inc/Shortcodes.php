@@ -32,10 +32,10 @@ class Shortcodes {
     if( empty($user_id) ) return '';
 
     if( isset($atts['role']) && $atts['role'] === 'group_leader' ) {
-      $user_groups = \learndash_get_users_group_ids( $user_id );
+      $user_groups = \learndash_get_administrators_group_ids( $user_id );
     }
     else{
-      $user_groups = \learndash_get_administrators_group_ids( $user_id );
+      $user_groups = \learndash_get_users_group_ids( $user_id );
     }
 
     ob_start(); ?>
