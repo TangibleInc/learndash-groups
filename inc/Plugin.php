@@ -4,8 +4,6 @@ namespace Tangible\LDGroups;
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
-use Tangible\LDGroups\User;
-use Tangible\LDGroups\Settings;
 use Tangible\PluginFramework;
 
 
@@ -27,16 +25,19 @@ Class Plugin
 		$this->init_framework();
 
 		// Handle the group access logic
-		new GroupAccess();
+		new GroupAccess;
 		
 		// Handle the admin part of wordpress
-		new Admin();
+		new Admin;
 
 		// Register field connections
-		new FieldConnections();
+		new FieldConnections;
+
+		// Register all the shortcodes of the plugin
+		new Shortcodes;
 
 		// Get the settings
-		$this->settings = new Settings();
+		$this->settings = new Settings;
 
 		// Register fileds
 		$this->register_fields();
