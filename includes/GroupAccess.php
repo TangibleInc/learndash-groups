@@ -4,12 +4,13 @@ namespace Tangible\LearnDashGroups;
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
+use Tangible\LearnDashGroups\Modules\Settings as settings; 
+
 /**
  * This class handle the comportement when a user
  * try to access to a LearnDash student group
  */
 class GroupAccess {
-
 
   /**
    * Constructor
@@ -56,7 +57,7 @@ class GroupAccess {
   private function get_restriction_type() {
 
     $possible_restriction = array( '404', 'home' );
-    $restriction = get_option( 'ldg-redirection-type', '404' );
+    $restriction = settings\get('redirect-type');
 
     return in_array( $restriction, $possible_restriction ) ? $restriction : '404'; 
   }
@@ -71,15 +72,15 @@ class GroupAccess {
       if ( $post_type !== 'groups' ) return $args;
 
       $args = array_merge($args, [
-            'public'             => true,
-            'show_in_nav_menus'  => true,
-            'has_archive'        => true,
-            'publicly_queryable' => true,
-        ]);
+        'public'             => true,
+        'show_in_nav_menus'  => true,
+        'has_archive'        => true,
+        'publicly_queryable' => true,
+      ]);
 
-        $args['capabilities']['read_post'] = 'read_post';
+      $args['capabilities']['read_post'] = 'read_post';
 
-        return $args;
+      return $args;
 
     }, 10, 2);
   }
@@ -102,19 +103,17 @@ class GroupAccess {
       if ( $this->user->is_in_group( $group_id ) ) return;
 
       switch ( $this->get_restriction_type() ) {
-
         case 'home':
           $this->home_redirection();
           break;
-
         case '404':
           $this->not_found_redirection();
           break;
-
         default:
           $this->not_found_redirection();
           break;
       }
+      
     }, 10, 1 );
 
     /**

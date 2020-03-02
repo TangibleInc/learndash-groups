@@ -25,5 +25,65 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor/tangible/plugin-framework/index.php';
 
 use Tangible\LearnDashGroups\Plugin;
+use Tangible\LearnDashGroups\Modules\Settings as settings;
 
-new Plugin();
+class LearnDashGroups {
+
+  use TangibleObject;
+
+  public $name  = 'ttsc';
+  public $state = [];
+
+  function __construct() {
+    
+    require_once LearnDashGroups_DIR . 'includes/utils/index.php';
+    require_once LearnDashGroups_DIR . 'includes/extensions/index.php';
+
+    add_action( tangible_plugin_framework()->ready, [$this, 'register'] );
+    new Plugin();
+  }
+
+  /**
+   * Register the plugin into the framework
+   * 
+   * @see https://docs.tangible.one/modules/plugin-framework/
+   *
+   * @param      object  $framework  The framework
+   */
+  function register( $framework ) {
+
+    $this->plugin = $framework
+      ->register_plugin([
+        'name'           => 'ld-groups',
+        'title'          => 'LearnDash Groups',
+        'setting_prefix' => 'ttlg',
+        'file_path'      => LearnDashGroups_FILE,
+        'version'        => LearnDashGroups_VER,
+        'item_id'        => 4945,
+        'multisite'       => false,
+      ])
+
+      /**
+       * For now, dependencies for LD, but needs to be removed in the future if we support other LMS
+       */
+      ->register_dependencies([
+       'sfwd-lms/sfwd_lms.php' => [
+          'title' => 'LearnDash',
+          'fallback_check' => function() { return defined('LEARNDASH_VERSION'); }
+        ],
+      ]);
+
+      $this->framework = $framework;
+  }
+}
+
+/**
+ * Get plugin instance
+ */
+function tangible_lg() {
+  static $o;
+  if ( $o ) return $o;
+  return $o = new LearnDashGroups();
+}
+
+tangible_lg();

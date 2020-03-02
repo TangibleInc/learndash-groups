@@ -15,7 +15,11 @@ class Shortcodes {
   public function __construct() {
     
     add_action( 'init', function() {
-      add_shortcode( 'extended_ld_user_groups', [ $this, 'extended_ld_user_groups' ] );
+
+      add_shortcode( 'ldg_user_groups', [ $this, 'user_groups' ] );
+      add_shortcode( 'ldg_group_picture', [ $this, 'group_picture' ] );
+      add_shortcode( 'ldg_group_cover_picture', [ $this, 'group_cover_picture' ] );
+    
     });
   }
 
@@ -26,7 +30,7 @@ class Shortcodes {
    *
    * @return     string
    */
-  public function extended_ld_user_groups( $atts ) {
+  public function user_groups( $atts ) {
 
     $user_id = get_current_user_id();
     if ( empty( $user_id ) ) return '';
@@ -38,10 +42,10 @@ class Shortcodes {
     }
 
     ob_start(); ?>
-    <div class="tt-extended-ld-user-groups">
+    <div class="ttlg-user-groups">
       <?php foreach ( $user_groups as $group_id ) : ?>
         <a href="<?= get_the_permalink( $group_id ); ?>">
-          <div class="tt-extended-ld-user-group">
+          <div class="ttlg-user-group">
             <?= get_the_title( $group_id ); ?>
           </div>
       <?php endforeach; ?>
@@ -51,4 +55,59 @@ class Shortcodes {
     return ob_get_clean();
   }
 
+  /**
+   * Display the picture of the group (set in the group edit page of the admin)
+   *
+   * @param      array  $atts   The atts
+   *
+   * @return     string
+   */
+  public function group_picture( $atts ) {
+
+    if( !get_queried_object() ) return false;
+
+    $post = get_queried_object();
+
+    if( !property_exists( $post, 'post_type' ) || $post->post_type !== 'groups' ) {
+      return '';
+    }
+
+    $group = new StudentGroup( $post->ID );
+
+    ob_start(); ?>
+      <div class="ttlg-group-picture">
+        <img src="<?= $group->get_picture_link(); ?>">
+      </div>
+    <?php
+
+    return ob_get_clean();
+  }
+
+  /**
+   * Display the cover picture of the group (set in the group edit page of the admin)
+   *
+   * @param      array  $atts   The atts
+   *
+   * @return     string
+   */
+  public function group_cover_picture( $atts ) {
+
+    if( !get_queried_object() ) return false;
+
+    $post = get_queried_object();
+
+    if( !property_exists( $post, 'post_type' ) || $post->post_type !== 'groups' ) {
+      return '';
+    }
+
+    $group = new StudentGroup( $post->ID );
+
+    ob_start(); ?>
+      <div class="ttlg-group-picture">
+        <img src="<?= $group->get_banner_link(); ?>">
+      </div>
+    <?php
+
+    return ob_get_clean();
+  }
 }

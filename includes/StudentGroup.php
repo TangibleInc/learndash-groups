@@ -25,10 +25,10 @@ class StudentGroup {
    */
   public function update_settings( $key, $value ) {
 
-    if ( get_post_meta( $this->id, 'ldg-' . $key . '-settings', false ) ) {
-        update_post_meta( $this->id, 'ldg-' . $key . '-settings', $value );
+    if ( get_post_meta( $this->id, 'ttlg-' . $key . '-settings', false ) ) {
+        update_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value );
     } else {
-        add_post_meta( $this->id, 'ldg-' . $key . '-settings', $value, true );
+        add_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value, true );
     }
   }
 
@@ -41,7 +41,7 @@ class StudentGroup {
    */
   public function get_setting( $key ) {
 
-    $settings = get_post_meta( $this->id, 'ldg-' . $key . '-settings', true );
+    $settings = get_post_meta( $this->id, 'ttlg-' . $key . '-settings', true );
 
     // Picture and banner aren't boolean
     if ( $key === 'picture' || $key === 'banner' ) $settings = (int) $settings;

@@ -86,7 +86,6 @@ class User {
 
       // If the user is group leader, we check if he is a group leader of the student group
     if ( $this->is_group_leader() ) {
-      
       $user_groups = (array) learndash_get_administrators_group_ids( $this->id );
       if ( ! empty( $user_groups ) && in_array( $group_id, $user_groups ) ) return true;
     }

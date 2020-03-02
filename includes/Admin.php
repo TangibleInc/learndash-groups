@@ -10,7 +10,6 @@ defined( 'ABSPATH' ) or die( 'Nothing to see here' );
  */
 class Admin {
 
-
   /**
    * Constructor
    */
