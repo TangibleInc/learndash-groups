@@ -17,7 +17,8 @@
     {"type": "vcs", "url": "git@bitbucket.org:/tangibleinc/tangible-builder.git"}
   ],
   "require": {
-    "tangible/plugin-framework": "dev-master"
+    "tangible/plugin-framework": "dev-master",
+    "erusev/parsedown": "dev-master"
   },
   "require-dev": {
     "tangible/builder": "dev-master"

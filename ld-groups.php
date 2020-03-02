@@ -25,7 +25,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor/tangible/plugin-framework/index.php';
 
 use Tangible\LearnDashGroups\Plugin;
-use Tangible\LearnDashGroups\Modules\Settings as settings;
 
 class LearnDashGroups {
 
@@ -38,6 +37,7 @@ class LearnDashGroups {
     
     require_once LearnDashGroups_DIR . 'includes/utils/index.php';
     require_once LearnDashGroups_DIR . 'includes/extensions/index.php';
+    require_once LearnDashGroups_DIR . 'includes/modules/index.php';
 
     add_action( tangible_plugin_framework()->ready, [$this, 'register'] );
     new Plugin();

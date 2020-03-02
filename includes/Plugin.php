@@ -4,6 +4,8 @@ namespace Tangible\LearnDashGroups;
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
+use Tangible\LearnDashGroups\Modules\Settings as settings;
+
 /**
  * Global controller of the plugin
  */
@@ -23,6 +25,8 @@ class Plugin {
     // Register all the shortcodes of the plugin
     new Shortcodes;
 
+    // Register settings pages 
+    add_action('init', function() { settings\register(); });
   }
 
 }

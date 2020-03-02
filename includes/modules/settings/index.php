@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
 use Tangible\LearnDashGroups\Modules\Settings as settings;
 
-// Function for managing settings value
+// Functions for managing settings value
 require_once __DIR__ . '/data.php';
 
 /**
@@ -26,6 +26,13 @@ function register() {
           require_once LearnDashGroups_DIR . 'includes/views/admin/settings.php';
           echo ob_get_clean();
         },
+      ],
+      'documentation' => [
+        'title' => __( 'Documentation', 'ld-groups' ),
+        'callback' => function() {
+          $markdown_doc = file_get_contents( LearnDashGroups_DIR . '/docs/index.md' );;
+          echo \Parsedown::instance()->text($markdown_doc);
+        }
       ],
     ]
   ]);
