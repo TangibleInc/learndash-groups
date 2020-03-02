@@ -64,9 +64,15 @@ class Shortcodes {
    */
   public function group_picture( $atts ) {
 
-    if( !get_queried_object() ) return false;
+    if( isset($atts['id']) ) {
+      $post_id = (int) $atts['id'];
+      $post = get_post( $post_id );
+    }
+    else {
+      $post = get_queried_object();
+    }
 
-    $post = get_queried_object();
+    if( empty($post) ) return '';
 
     if( !property_exists( $post, 'post_type' ) || $post->post_type !== 'groups' ) {
       return '';
@@ -92,9 +98,15 @@ class Shortcodes {
    */
   public function group_cover_picture( $atts ) {
 
-    if( !get_queried_object() ) return false;
+    if( isset($atts['id']) ) {
+      $post_id = (int) $atts['id'];
+      $post = get_post( $post_id );
+    }
+    else {
+      $post = get_queried_object();
+    }
 
-    $post = get_queried_object();
+    if( empty($post) ) return '';
 
     if( !property_exists( $post, 'post_type' ) || $post->post_type !== 'groups' ) {
       return '';
