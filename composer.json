@@ -1,23 +1,25 @@
 {
-    "name": "tangible/ld-groups",
-    "description": "Allow us to use Beaver Themer with the LearnDash Student Group post type and add a picture and a banner field connection for student group.",
-    "license": "GPLv2 or later",
-    "authors": [
-        {
-            "name": "Tangible Team"
-        }
-    ],
-    "minimum-stability": "dev",
-    "autoload": {
-        "psr-4": { 
-            "Tangible\\LDGroups\\": "./inc" 
-        }
-    },
-    "repositories": [{
-        "type": "vcs",
-        "url": "git@bitbucket.org:/tangibleinc/tangible-plugin-framework.git"
-    }],
-    "require": {
-        "tangible/plugin-framework": "dev-master"
+  "name": "tangible/ld-groups",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name": "Tangible Team"
     }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": { 
+      "Tangible\\LearnDashGroups\\": "./includes" 
+    }
+  },
+  "repositories": [
+    {"type": "vcs", "url": "git@bitbucket.org:/tangibleinc/tangible-plugin-framework.git"},
+    {"type": "vcs", "url": "git@bitbucket.org:/tangibleinc/tangible-builder.git"}
+  ],
+  "require": {
+    "tangible/plugin-framework": "dev-master"
+  },
+  "require-dev": {
+    "tangible/builder": "dev-master"
+  }
 }

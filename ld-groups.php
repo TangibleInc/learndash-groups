@@ -14,21 +14,16 @@
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
+define( 'LearnDashGroups_VER', '0.0.1' );
+define( 'LearnDashGroups_FILE', __FILE__ );
+define( 'LearnDashGroups_DIR', plugin_dir_path( __FILE__ ) );
+define( 'LearnDashGroups_URL', plugins_url( '/', __FILE__ ) );
+define( 'LearnDashGroups_PATH', plugin_basename( __FILE__ ) );
 
-define( 'TangibleGroups_VER', '0.0.1' );
-define( 'TangibleGroups_FILE', __FILE__ );
-define( 'TangibleGroups_DIR', plugin_dir_path( __FILE__ ) );
-define( 'TangibleGroups_URL', plugins_url( '/', __FILE__ ) );
-define( 'TangibleGroups_PATH', plugin_basename( __FILE__ ) );
-
-
-// Composer
+// Dependencies
 require_once __DIR__ . '/vendor/autoload.php';
-
-// Internal framework
 require_once __DIR__ . '/vendor/tangible/plugin-framework/index.php';
 
-
-use Tangible\LDGroups\Plugin;
+use Tangible\LearnDashGroups\Plugin;
 
 new Plugin();
