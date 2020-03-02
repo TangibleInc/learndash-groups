@@ -60,18 +60,17 @@ class FieldConnections {
    */
   public function get_current_picture() {
 
-    if( get_queried_object() ){
-      $post = get_queried_object();
+    if( !get_queried_object() ) return false;
 
-      if( property_exists( $post, 'post_type' ) && $post->post_type === 'groups' ) {
+    $post = get_queried_object();
 
-        $group = new StudentGroup( $post->ID );
-        $link = $group->get_picture_link();
+    if( property_exists( $post, 'post_type' ) && $post->post_type === 'groups' ) {
 
-        return $link;
-      }
+      $group = new StudentGroup( $post->ID );
+      $link = $group->get_picture_link();
+
+      return $link;
     }
-
     return false;
   }
 
@@ -84,21 +83,19 @@ class FieldConnections {
    */
   public function get_current_banner() {
 
-    if( get_queried_object() ){
-      $post = get_queried_object();
+    if( !get_queried_object() ) return false;
 
-      if( property_exists( $post, 'post_type' ) && $post->post_type === 'groups' ) {
+    $post = get_queried_object();
 
-        $group = new StudentGroup( $post->ID );
-        $link = $group->get_banner_link();
+    if( property_exists( $post, 'post_type' ) && $post->post_type === 'groups' ) {
 
-        return $link;
-      }
+      $group = new StudentGroup( $post->ID );
+      $link = $group->get_banner_link();
+
+      return $link;
     }
-
     return false;
   }
-
 
 }
 

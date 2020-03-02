@@ -11,6 +11,6 @@ module.exports = {
       src: 'assets/src/admin/index.scss',
       dest: 'assets/build/admin.min.css',
       watch: 'assets/src/admin/**/*.scss'
-    },
+    }
   ]
 }

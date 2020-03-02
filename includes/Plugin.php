@@ -7,8 +7,7 @@ defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 /**
  * Global controller of the plugin
  */
-Class Plugin
-{
+class Plugin {
 
   /**
    * Constructor
@@ -22,12 +21,12 @@ Class Plugin
     include __DIR__ . '/extensions/index.php';
 
     // Initialize the tangible framework
-    add_action( tangible_plugin_framework()->ready, [$this, 'init_framework'] );
+    add_action( tangible_plugin_framework()->ready, [ $this, 'init_framework' ] );
 
     // Handle the group access logic
     new GroupAccess;
 
-    // Handle the admin part of wordpress
+    // Handle the admin part of WordPress
     new Admin;
 
     // Register all the shortcodes of the plugin
@@ -40,8 +39,6 @@ Class Plugin
     $this->register_fields();
   }
 
-
-
   /**
    * Register all the fields of the plugin
    */
@@ -52,43 +49,41 @@ Class Plugin
     } );
   }
 
-
-
   /**
    * Use the Tangible internal plugin (see documentation)
    */
-  public function init_framework($framework) {
+  public function init_framework( $framework ) {
 
     $framework->register_plugin([
 
       // Required
-      'name'            => 'ld-groups',
-      'title'           => 'LearnDash Groups',
-      'setting_prefix'  => 'ldg',
-      'file_path'       => LearnDashGroups_FILE,
-      'version'         => LearnDashGroups_VER,
+      'name'           => 'ld-groups',
+      'title'          => 'LearnDash Groups',
+      'setting_prefix' => 'ldg',
+      'file_path'      => LearnDashGroups_FILE,
+      'version'        => LearnDashGroups_VER,
 
       // Must match with a product in the Tangible Plugins store
-      'item_id' => 4945,
+      'item_id'        => 4945,
 
       // Plugin dependencies
-      'dependencies'     => [
+      'dependencies'   => [
         'sfwd-lms/sfwd_lms.php' => [
-            'title' => 'LearnDash',
+            'title'          => 'LearnDash',
             'fallback_check' => function() {
               return defined( 'LEARNDASH_VERSION' );
-            }
+            },
         ],
       ],
 
       // Settings page CSS/JS
-      'settings_css'  => plugins_url( 'settings/style.css', LearnDashGroups_VER ),
-      'settings_js'   => plugins_url( 'settings/script.js', LearnDashGroups_VER ),
+      'settings_css'   => plugins_url( 'settings/style.css', LearnDashGroups_VER ),
+      'settings_js'    => plugins_url( 'settings/script.js', LearnDashGroups_VER ),
 
       // Tabs in settings page
-      'setting_tabs' => [
+      'setting_tabs'   => [
         'settings' => [
-          'title' => __( 'Settings', 'ld-groups' ),
+          'title'    => __( 'Settings', 'ld-groups' ),
           'callback' => function () {
             $this->settings->get_view();
           },

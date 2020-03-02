@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Tangible\LearnDashGroups;
 
@@ -6,46 +6,37 @@ defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
 use Tangible\LearnDashGroups\User;
 
-
 /**
  * Settings page controller
  */
-Class Settings
-{
+class Settings {
 
+  /**
+   * Constructor
+   */
+  public function __construct() {}
 
-	/**
-	 * Constructor
-	 */
-	public function __construct() {
+  /**
+   * Register the settings options (call in the Plugin class)
+   */
+  public function register_settings() {
 
-	}
+    register_setting( 'ldg-settings', 'ldg-redirection-type' );
+  }
 
+  /**
+   * Get the settigns html
+   *
+   * @return string
+   */
+  public function get_view() {
 
+    $restriction = get_option( 'ldg-redirection-type', '404' );
 
-	/**
-	 * Register the settings options (call in the Plugin class)
-	 */
-	public function register_settings() {
+    ob_start();
+    require LearnDashGroups_DIR . 'includes/views/admin/settings.php';
+    $content = ob_get_clean();
 
- 		register_setting( 'ldg-settings', 'ldg-redirection-type' );
-	}
-
-
-
-	/**
-	 * Get the settigns html
-	 *  
-	 * @return string
-	 */
-	public function get_view() {
-		
-		$restriction = get_option( 'ldg-redirection-type', '404' );
-
-		ob_start();
-		require LearnDashGroups_DIR . 'includes/views/admin/settings.php';
-		$content = ob_get_clean();
-
-		echo $content; 
-	}
+    echo $content;
+  }
 }

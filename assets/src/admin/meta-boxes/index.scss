@@ -1,32 +1,32 @@
-.ttlg-metabox > div{
+.ttlg-metabox > div {
   display: flex;
   justify-content: space-between;
-  padding-top: 5px;
   padding-bottom: 5px;
+  padding-top: 5px;
 
   input[type='file'] {
     display: none;
   }
 
-  label{
+  label {
     width: auto;
   }
 
   .ttlg-metabox-file {
-    border: solid 1px rgba(0,0,0,0.2);
-    width: 200px;
-    height: 200px;
-    background-size: cover;
     background-position: center;
+    background-size: cover;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    height: 200px;
+    width: 200px;
 
     p {
-      text-align: center;
       margin-top: 33px;
+      text-align: center;
     }
   }
 
-  .ttlg-metabox-file-cover{
-    width: 100%;
+  .ttlg-metabox-file-cover {
     height: 200px;
+    width: 100%;
   }
 }
