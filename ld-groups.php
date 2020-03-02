@@ -2,7 +2,7 @@
 /**
  * Plugin Name: LearnDash Groups
  * Plugin URI: https://tangibleplugins.com
- * Description: Allow the use of Beaver Themer with LearnDash Student Groups and create pictures / banners fields connections for each student groups
+ * Description: LearnDash Groups is a free plugin developed by TangiblePlugins that allows you to display a group page only to users in the group, providing a space to  display group-related content.
  * Version: 0.0.1
  * Author: Team Tangible
  * Author URI: https://teamtangible.com/

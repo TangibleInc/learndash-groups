@@ -24,7 +24,7 @@ class Shortcodes {
   }
 
   /**
-   * Display the list of the users's group
+   * Display users's group
    *
    * @param      array  $atts   The atts
    *
