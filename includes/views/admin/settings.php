@@ -12,7 +12,7 @@ $redirect_field_name = settings\field_name('redirect-type');
     
   <div class="setting-row">
     <label for="<?= $redirect_field_name ?>">
-      <p style="margin:0;"><?= __( 'Defined the comportement if the user is not allowed to access to the group', 'ld-groups' ); ?></p>    
+      <p style="margin:0;"><?= __( 'Defines the behaviour if the user isn’t allowed to access the group.', 'ld-groups' ); ?></p>    
     </label>
     <select name="<?= $redirect_field_name ?>" id="<?= $redirect_field_name ?>" class="postform">
         <option <?= $redirect_type === '404' ? 'selected' : ''; ?> class="level-0" value="404">

@@ -30,7 +30,7 @@ class Admin {
     add_action( 'add_meta_boxes', function() {
       add_meta_box(
         'ld-groups_picture_meta_box_options',
-        __( 'LearnDash Group Pictures', 'ld-groups' ),
+        __( 'LearnDash Group Assets', 'ld-groups' ),
         array( $this, 'get_metabox_content' ),
         'groups',
         'advanced',

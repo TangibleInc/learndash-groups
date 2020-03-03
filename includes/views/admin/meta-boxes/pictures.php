@@ -4,7 +4,7 @@
 
 <section class='ttlg-metabox'>
   <div>
-    <label><?= __( 'Group picture:', 'ld-groups' ); ?></label>
+    <label><?= __( 'Profile photo:', 'ld-groups' ); ?></label>
     <label style="background-image: url(<?= $group->get_picture_link(); ?>)" id='ttlg-metabox-picture' class='ttlg-metabox-file' for="ttlg-metabox-file-picture">
       <span>
         <span class="button-secondary">
@@ -25,7 +25,7 @@
   </div>
 
   <div style='flex-direction: column'>
-    <label><?= __( 'Cover picture:', 'ld-groups' ); ?></label>
+    <label><?= __( 'Cover photo:', 'ld-groups' ); ?></label>
     <label style="background-image: url(<?= $group->get_banner_link(); ?>)" id='ttlg-metabox-banner' class='ttlg-metabox-file ttlg-metabox-file-cover' for="ttlg-metabox-file-banner">
       <span>
         <span class="button-secondary">
