@@ -13,15 +13,31 @@
   }
 
   .ttlg-metabox-file {
+    position: relative;
     background-position: center;
     background-size: cover;
     border: solid 1px rgba(0, 0, 0, 0.2);
     height: 200px;
     width: 200px;
 
-    p {
-      margin-top: 33px;
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
+
+      span.button-secondary {
+        position: static;
+        margin: 10px;
+        top: 0;
+        left: 0;
+        transform: none;
+        
+        &::last-child{
+          color: #dc3232;
+        }
+      }
     }
   }
 
@@ -29,4 +45,10 @@
     height: 200px;
     width: 100%;
   }
+}
+
+#ttlg-remove-file-picture,
+#ttlg-remove-file-banner {
+  margin: 10px;
+  input { display: none }
 }

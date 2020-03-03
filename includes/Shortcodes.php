@@ -14,17 +14,17 @@ class Shortcodes {
    */
   public function __construct() {
     
-    add_action( 'init', function() {
+//    add_action( 'init', function() {
 
       add_shortcode( 'ldg_user_groups', [ $this, 'user_groups' ] );
       add_shortcode( 'ldg_group_picture', [ $this, 'group_picture' ] );
       add_shortcode( 'ldg_group_cover_picture', [ $this, 'group_cover_picture' ] );
     
-    });
+  //  });
   }
 
   /**
-   * Display users's group
+   * Display userœ's group
    *
    * @param      array  $atts   The atts
    *
@@ -113,9 +113,9 @@ class Shortcodes {
     }
 
     $group = new StudentGroup( $post->ID );
-
+    
     ob_start(); ?>
-      <div class="ttlg-group-picture">
+      <div class="ttlg-group-cover">
         <img src="<?= $group->get_banner_link(); ?>">
       </div>
     <?php
