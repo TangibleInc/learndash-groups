@@ -97,5 +97,23 @@ class StudentGroup {
     return $attachment_id ? wp_get_attachment_url( $attachment_id ) : false;
   }
 
+  /**
+   * HTML of the picture using the wordpress function (better for the accessibility)
+   *
+   * @return     string  (html)
+   */
+  public function get_picture() {
+    $attachment_id = $this->get_setting( 'picture' );
+    return wp_get_attachment_image( $attachment_id, 'full', false, ['class' => 'ttlg-group-picture'] );
+  }
 
+  /**
+   * HTML of the banner using the wordpress function (better for the accessibility)
+   *
+   * @return     string  (html)
+   */
+  public function get_banner() {
+    $attachment_id = $this->get_setting( 'banner' );
+    return wp_get_attachment_image( $attachment_id, 'full', false, ['class' => 'ttlg-group-banner'] );
+  }
 }

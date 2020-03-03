@@ -75,14 +75,7 @@ class Shortcodes {
     }
 
     $group = new StudentGroup( $post->ID );
-
-    ob_start(); ?>
-      <div class="ttlg-group-picture">
-        <img src="<?= $group->get_picture_link(); ?>">
-      </div>
-    <?php
-
-    return ob_get_clean();
+    return $group->get_picture();
   }
 
   /**
@@ -109,13 +102,6 @@ class Shortcodes {
     }
 
     $group = new StudentGroup( $post->ID );
-    
-    ob_start(); ?>
-      <div class="ttlg-group-cover">
-        <img src="<?= $group->get_banner_link(); ?>">
-      </div>
-    <?php
-
-    return ob_get_clean();
+    return $group->get_banner();
   }
 }
