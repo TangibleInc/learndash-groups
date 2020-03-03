@@ -54,7 +54,7 @@ class LearnDashGroups {
 
     $this->plugin = $framework
       ->register_plugin([
-        'name'           => 'ld-groups',
+        'name'           => 'learndash-groups',
         'title'          => 'LearnDash Groups',
         'setting_prefix' => 'ttlg',
         'file_path'      => LearnDashGroups_FILE,
