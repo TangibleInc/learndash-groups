@@ -4,6 +4,7 @@ namespace Tangible\LearnDashGroups\Extensions;
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
+use Tangible\LearnDashGroups\StudentGroup;
 
 /**
  * This class register field connections for Beaver Themer
@@ -30,7 +31,7 @@ class FieldConnections {
     add_action('fl_page_data_add_properties', function () {
 
       \FLPageData::add_group( 'ld-groups', array(
-        'label' => 'LearnDash : Groups'
+        'label' => 'LearnDash: Groups'
       )); 
 
       \FLPageData::add_post_property( 'ld-groups_picture', array(
