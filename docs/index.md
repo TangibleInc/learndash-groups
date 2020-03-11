@@ -2,7 +2,7 @@
 
 ## Description
 
-[LearnDash Groups](tangibleplugins.com/) is a free plugin developed by [Tangible Plugins](tangibleplugins.com/) that allows you to display a group page to group members, providing a space to  display group-related content.
+[Groups Extended for LearnDash](tangibleplugins.com/) is a free plugin developed by [Tangible Plugins](tangibleplugins.com/) that allows you to display a group page to group members, providing a space to  display group-related content.
 
 ## Dependencies
 

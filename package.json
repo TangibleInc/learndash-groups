@@ -1,7 +1,7 @@
 {
-  "name": "ld-groups",
+  "name": "learndash-groups",
   "title": "Groups for LearnDash",
-  "productId": false,
+  "productId": 9557,
   "multisite": false,
   "private": true,
   "scripts": {

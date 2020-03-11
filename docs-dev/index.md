@@ -1,10 +1,10 @@
-# LearnDash Groups
+# Groups Extended for LearnDash
 
 Git repository: https://bitbucket.org/tangibleinc/learndash-groups
 
 ## Overview
 
-LearnDash Groups is a free plugin developed by TangiblePlugins that allows you to display a group page only to users in the group, providing a space to display group-related content.
+Groups Extended for LearnDash is a free plugin developed by TangiblePlugins that allows you to display a group page only to users in the group, providing a space to display group-related content.
 
 ## Dependencies
 

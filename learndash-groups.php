@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: LearnDash Groups
+ * Plugin Name: Groups Extended for LearnDash
  * Plugin URI: https://tangibleplugins.com
- * Description: LearnDash Groups is a free plugin developed by TangiblePlugins that allows you to display a group page only to users in the group, providing a space to  display group-related content.
+ * Description: Groups Extended for LearnDash is a free plugin developed by TangiblePlugins that allows you to display a group page only to users in the group, providing a space to  display group-related content.
  * Version: 0.0.1
  * Author: Team Tangible
  * Author URI: https://teamtangible.com/
@@ -54,12 +54,12 @@ class LearnDashGroups {
 
     $this->plugin = $framework
       ->register_plugin([
-        'name'           => 'learndash-groups',
-        'title'          => 'LearnDash Groups',
-        'setting_prefix' => 'ttlg',
-        'file_path'      => LearnDashGroups_FILE,
-        'version'        => LearnDashGroups_VER,
-        'item_id'        => 4945,
+        'name'            => 'learndash-groups',
+        'title'           => 'Groups Extended for LearnDash',
+        'setting_prefix'  => 'ttlg',
+        'file_path'       => LearnDashGroups_FILE,
+        'version'         => LearnDashGroups_VER,
+        'item_id'         => 9557,
         'multisite'       => false,
       ])
 
