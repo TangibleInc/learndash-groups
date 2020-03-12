@@ -29,4 +29,19 @@ class Plugin {
     add_action('init', function() { settings\register(); });
   }
 
+  /**
+   * Return the HTML for the log
+   *
+   * @return     string
+   */
+  public static function logo() {
+
+    ob_start(); ?>
+    <div class="ttlg-logo">
+      <img src="<?= LearnDashGroups_URL ?>assets/images/logo.png"/>
+    </div><?php 
+    
+    return ob_get_clean();
+  }
+
 }

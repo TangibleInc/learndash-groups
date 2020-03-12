@@ -61,6 +61,12 @@ class LearnDashGroups {
         'version'         => LearnDashGroups_VER,
         'item_id'         => 9557,
         'multisite'       => false,
+
+        // Display plugins logo into the settings
+        'settings_title_callback' => function( $plugin ) {
+          echo Plugin::logo();
+          echo $plugin['title'];
+        }
       ])
 
       /**
