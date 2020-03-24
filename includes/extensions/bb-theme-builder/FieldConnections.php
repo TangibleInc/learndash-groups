@@ -4,7 +4,6 @@ namespace Tangible\LearnDashGroups\Extensions;
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
-use Tangible\LearnDashGroups\StudentGroup;
 
 /**
  * This class register field connections for Beaver Themer
@@ -38,64 +37,18 @@ class FieldConnections {
         'label'   => __( 'Picture', 'ld-groups' ),
         'group'   => 'ld-groups',
         'type'    => 'photo',
-        'getter'  => array( $this, 'get_current_picture' )
+        'getter'  => 'Tangible\LearnDashGroups\Utils\get_group_picture'
       ));
 
       \FLPageData::add_post_property( 'ld-groups_banner', array(
         'label'   => __( 'Banner', 'ld-groups' ),
         'group'   => 'ld-groups',
         'type'    => 'photo',
-        'getter'  => array( $this, 'get_current_banner' )
+        'getter'  => 'Tangible\LearnDashGroups\Utils\get_group_banner'
       ));
 
     }, 1);
 
-  }
-
-  /**
-   * If the current object is a post and the postype of this
-   * post is a LearnDash student group, we return the url of
-   * the picture (if any)
-   * 
-   * @return string url
-   */
-  public function get_current_picture() {
-
-    if( !get_queried_object() ) return false;
-
-    $post = get_queried_object();
-
-    if( property_exists( $post, 'post_type' ) && $post->post_type === 'groups' ) {
-
-      $group = new StudentGroup( $post->ID );
-      $link = $group->get_picture_link();
-
-      return $link;
-    }
-    return false;
-  }
-
-  /**
-   * If the current object is a post and the postype of this
-   * post is a LearnDash student group, we return the url of
-   * the banner (if any)
-   * 
-   * @return string url
-   */
-  public function get_current_banner() {
-
-    if( !get_queried_object() ) return false;
-
-    $post = get_queried_object();
-
-    if( property_exists( $post, 'post_type' ) && $post->post_type === 'groups' ) {
-
-      $group = new StudentGroup( $post->ID );
-      $link = $group->get_banner_link();
-
-      return $link;
-    }
-    return false;
   }
 
 }

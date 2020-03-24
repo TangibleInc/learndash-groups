@@ -12,3 +12,7 @@ if ( defined( 'FL_THEME_BUILDER_VERSION' ) ) {
   require_once __DIR__ . '/bb-theme-builder/index.php';
 }
 
+if ( defined( 'ELEMENTOR_VERSION' ) ) {
+  require_once __DIR__ . '/elementor/index.php';
+}
+

@@ -74,6 +74,17 @@ class StudentGroup {
   }
 
   /**
+   * Return the id of the picture set for the student group
+   *
+   * @return integer   
+   */
+  public function get_picture_id() {
+
+    $attachment_id = $this->get_setting( 'picture' );
+    return $attachment_id ? $attachment_id : false;
+  }
+
+  /**
    * Save the banner (if exist in the $_FILES array) and add a post
    * meta to the group with the link of the banner
    */
@@ -95,6 +106,17 @@ class StudentGroup {
 
     $attachment_id = $this->get_setting( 'banner' );
     return $attachment_id ? wp_get_attachment_url( $attachment_id ) : false;
+  }
+
+  /**
+   * Return the id of the picture set for the student group
+   *
+   * @return integer   
+   */
+  public function get_banner_id() {
+
+    $attachment_id = $this->get_setting( 'banner' );
+    return $attachment_id ? $attachment_id : false;
   }
 
   /**
