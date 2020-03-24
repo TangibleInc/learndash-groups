@@ -76,6 +76,7 @@ class GroupAccess {
         'show_in_nav_menus'  => true,
         'has_archive'        => true,
         'publicly_queryable' => true,
+        'exclude_from_search'=> false
       ]);
 
       $args['capabilities']['read_post'] = 'read_post';
@@ -114,7 +115,7 @@ class GroupAccess {
           break;
       }
       
-    }, 10, 1 );
+    }, 10 ** 19, 1 ); // We need a REALLY HIGH priority for redirecting to 404 when Elementor is activated
 
     /**
      * Normally this is useless, but if for some reason the redirection is not working,
