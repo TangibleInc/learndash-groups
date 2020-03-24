@@ -16,6 +16,13 @@ Groups Extended for LearnDash is a free plugin developed by Tangible Plugins tha
 
 == Changelog ==
 
+= 0.0.2 =
+
+Release Date: 2020-03-24
+
+- Elementor: Add support for Elementor Pro Theme Builder to groups post type
+- Elementor: Add dynamic tags for group picture and banner
+
 = 0.0.1 =
 
 Release Date: 2020-03-11
