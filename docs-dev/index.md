@@ -10,6 +10,7 @@ Groups Extended for LearnDash is a free plugin developed by TangiblePlugins that
 
 - LearnDash
 - BeaverThemer (optional)
+- Elementor (optional)
 
 ## Shortcodes
 
