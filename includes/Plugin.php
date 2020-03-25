@@ -37,7 +37,7 @@ class Plugin {
   public static function logo() {
 
     ob_start(); ?>
-    <div class="ttlg-logo">
+    <div class="ttge-logo">
       <img src="<?= LearnDashGroups_URL ?>assets/images/logo.png"/>
     </div><?php 
     

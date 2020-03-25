@@ -2,24 +2,24 @@ export const initMetaBoxes = () => {
 
   let d = document
 
-  const groupPicture = d.getElementById('ttlg-metabox-file-picture')
-  const groupBanner = d.getElementById('ttlg-metabox-file-banner')
+  const groupPicture = d.getElementById('ttge-metabox-file-picture')
+  const groupBanner = d.getElementById('ttge-metabox-file-banner')
   
-  const removePicture = d.getElementById('ttlg-remove-file-picture')
-  const removeBanner = d.getElementById('ttlg-remove-file-banner')
+  const removePicture = d.getElementById('ttge-remove-file-picture')
+  const removeBanner = d.getElementById('ttge-remove-file-banner')
 
   /**
    * Show the picture/banner dynamically
    */
   groupPicture.addEventListener('change', () => {
     removePicture.getElementsByTagName('input')[0].checked = false
-    previewImgFile(groupPicture, d.getElementById('ttlg-metabox-picture'), true)
+    previewImgFile(groupPicture, d.getElementById('ttge-metabox-picture'), true)
     removePicture.style.display = ''
   })
 
   groupBanner.addEventListener('change', () => {
     removeBanner.getElementsByTagName('input')[0].checked = false
-    previewImgFile(groupBanner, d.getElementById('ttlg-metabox-banner'), true)
+    previewImgFile(groupBanner, d.getElementById('ttge-metabox-banner'), true)
     removeBanner.style.display = ''
   })
 
@@ -28,14 +28,14 @@ export const initMetaBoxes = () => {
    */
   removePicture.addEventListener('click', () => {
     groupPicture.value = ''
-    d.getElementById('ttlg-metabox-picture').style = ''
+    d.getElementById('ttge-metabox-picture').style = ''
     removePicture.getElementsByTagName('input')[0].checked = true
     removePicture.style.display = 'none'
   })
 
   removeBanner.addEventListener('click', () => {
     groupBanner.value = ''
-    d.getElementById('ttlg-metabox-banner').style = ''
+    d.getElementById('ttge-metabox-banner').style = ''
     removeBanner.getElementsByTagName('input')[0].checked = true
     removeBanner.style.display = 'none'
   })

@@ -1,4 +1,4 @@
-.ttlg-metabox > div {
+.ttge-metabox > div {
   display: flex;
   justify-content: space-between;
   padding-bottom: 5px;
@@ -12,7 +12,7 @@
     width: auto;
   }
 
-  .ttlg-metabox-file {
+  .ttge-metabox-file {
     position: relative;
     background-position: center;
     background-size: cover;
@@ -41,14 +41,14 @@
     }
   }
 
-  .ttlg-metabox-file-cover {
+  .ttge-metabox-file-cover {
     height: 200px;
     width: 100%;
   }
 }
 
-#ttlg-remove-file-picture,
-#ttlg-remove-file-banner {
+#ttge-remove-file-picture,
+#ttge-remove-file-banner {
   margin: 10px;
   input { display: none }
 }

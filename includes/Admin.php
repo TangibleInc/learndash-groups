@@ -64,11 +64,11 @@ class Admin {
       $group->save_picture();
       $group->save_banner();
       
-      if( isset($_POST['ttlg-remove-file-picture']) && $_POST['ttlg-remove-file-picture'] === 'on' ) {
+      if( isset($_POST['ttge-remove-file-picture']) && $_POST['ttge-remove-file-picture'] === 'on' ) {
         $group->update_settings( 'picture', ' ');
       }
 
-      if( isset($_POST['ttlg-remove-file-banner']) && $_POST['ttlg-remove-file-banner'] === 'on' ) {
+      if( isset($_POST['ttge-remove-file-banner']) && $_POST['ttge-remove-file-banner'] === 'on' ) {
         $group->update_settings( 'banner', ' ');
       }
 

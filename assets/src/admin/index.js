@@ -6,7 +6,7 @@ jQuery(() => {
   /**
    * On the edit post page of learndash groups
    */
-  if (d.getElementById('ttlg-metabox-file-picture')) {
+  if (d.getElementById('ttge-metabox-file-picture')) {
     initMetaBoxes()
   }
 })

@@ -55,10 +55,10 @@ class StudentGroup {
    */
   public function save_picture() {
 
-    if ( empty($_FILES['ttlg-metabox-file-picture']) ) return;
-    if ( $_FILES['ttlg-metabox-file-picture']['size'] === 0 ) return;
+    if ( empty($_FILES['ttge-metabox-file-picture']) ) return;
+    if ( $_FILES['ttge-metabox-file-picture']['size'] === 0 ) return;
 
-    $picture_id = utils\save_image( 'ttlg-metabox-file-picture' );
+    $picture_id = utils\save_image( 'ttge-metabox-file-picture' );
     $this->update_settings( 'picture', $picture_id );
   }
 
@@ -90,10 +90,10 @@ class StudentGroup {
    */
   public function save_banner() {
 
-    if ( empty($_FILES['ttlg-metabox-file-banner']) ) return;
-    if ( $_FILES['ttlg-metabox-file-banner']['size'] === 0 ) return;
+    if ( empty($_FILES['ttge-metabox-file-banner']) ) return;
+    if ( $_FILES['ttge-metabox-file-banner']['size'] === 0 ) return;
 
-    $picture_id = utils\save_image( 'ttlg-metabox-file-banner' );
+    $picture_id = utils\save_image( 'ttge-metabox-file-banner' );
     $this->update_settings( 'banner', $picture_id );
   }
 
