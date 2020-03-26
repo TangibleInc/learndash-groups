@@ -4,6 +4,8 @@ namespace Tangible\LearnDashGroups;
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
+use Tangible\LearnDashGroups\StudentGroup;
+
 /**
  * This class handle all the shortcodes
  */
@@ -13,7 +15,7 @@ class Shortcodes {
    * Constructs a new instance.
    */
   public function __construct() {
-    
+  
     add_shortcode( 'ldg_user_groups', [ $this, 'user_groups' ] );
     add_shortcode( 'ldg_group_picture', [ $this, 'group_picture' ] );
     add_shortcode( 'ldg_group_cover_picture', [ $this, 'group_cover_picture' ] );
@@ -32,21 +34,33 @@ class Shortcodes {
     if ( empty( $user_id ) ) return '';
 
     if ( isset( $atts['role'] ) && $atts['role'] === 'group_leader' ) {
-      $user_groups = \learndash_get_administrators_group_ids( $user_id );
+      $groups = \learndash_get_administrators_group_ids( $user_id );
     } else {
-      $user_groups = \learndash_get_users_group_ids( $user_id );
+      $groups = \learndash_get_users_group_ids( $user_id );
     }
 
-    ob_start(); ?>
-    <div class="ttlg-user-groups">
-      <?php foreach ( $user_groups as $group_id ) : ?>
-        <a href="<?= get_the_permalink( $group_id ); ?>">
-          <div class="ttlg-user-group">
-            <?= get_the_title( $group_id ); ?>
-          </div>
-      <?php endforeach; ?>
-    </div>
-    <?php
+    ob_start();
+    
+    if( isset($atts['style']) &&  $atts['style'] === 'simple' ) { 
+      ?>
+        <div class="ttge-user-groups">
+          <?php foreach ( $groups as $group_id ) : ?>
+            <a href="<?= get_the_permalink( $group_id ); ?>">
+              <div class="ttge-user-group">
+                <?= get_the_title( $group_id ); ?>
+              </div>
+          <?php endforeach; ?>
+        </div>
+      <?php 
+    }
+    else {
+      
+      wp_enqueue_style( 'ttlg-frontend', LearnDashGroups_URL . 'assets/build/frontend.min.css' );
+      foreach( $groups as $key => $group ) {
+        $groups[$key] = new StudentGroup( $group );
+      }
+      require LearnDashGroups_DIR . 'includes/views/shortcodes/user-groups.php';
+    }
 
     return ob_get_clean();
   }

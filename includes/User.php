@@ -14,21 +14,8 @@ class User {
    *
    * @param int $id
    */
-  public function __construct() {
-
-    add_action( 'init', function() {
-      $id = get_current_user_id();
-      $this->set_id( $id );
-    } );
-  }
-
-  /**
-   * Set the id attribute of the user
-   *
-   * @param int $id
-   */
-  private function set_id( $id ) {
-    $this->id = (int) $id;
+  public function __construct( $user_id = false ) {
+    $this->id = $user_id === false ? get_current_user_id() : (int) $user_id;
   }
 
   /**
@@ -47,8 +34,14 @@ class User {
    * @return string url
    */
   public function get_picture() {
-    $avatar = get_avatar_url( $this->id );
-    return $avatar;
+
+    // $avatar = get_avatar_url( $this->id );
+    
+    // Some plugin are not compatible with the get_avatar_url function, so we use another method
+    preg_match("/src='(.*?)'/i", get_avatar( $this->id, 150 ), $matches); 
+    if( empty($matches) ) preg_match('/src="(.*?)"/i', get_avatar( $this->id, 150 ), $matches);
+    
+    return $matches[1];
   }
 
   /**

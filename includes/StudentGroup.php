@@ -138,4 +138,17 @@ class StudentGroup {
     $attachment_id = $this->get_setting( 'banner' );
     return wp_get_attachment_image( $attachment_id, 'full', false, ['class' => 'ttlg-group-banner'] );
   }
+
+  public function get_group_leaders() {
+
+    // LearnDash function
+    $group_leaders = \learndash_get_groups_administrator_ids( $this->id );
+    $response = [];
+
+    foreach( $group_leaders as $leader_id ) {
+      array_push( $response, new User( $leader_id ) );      
+    }
+
+    return $response;
+  }
 }

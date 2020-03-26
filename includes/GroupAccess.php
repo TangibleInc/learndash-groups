@@ -18,7 +18,9 @@ class GroupAccess {
   public function __construct() {
 
     // Current user
-    $this->user = new User();
+    add_action( 'init', function() {
+      $this->user = new User();
+    }, 10 );
 
     // Set the visibility of the cpt to true
     $this->set_groups_to_public();
