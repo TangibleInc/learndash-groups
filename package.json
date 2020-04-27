@@ -5,10 +5,10 @@
   "multisite": false,
   "private": true,
   "scripts": {
-    "dev": "./vendor/tangible/builder/run dev",
-    "build": "./vendor/tangible/builder/run build",
-    "lint": "./vendor/tangible/builder/run lint",
-    "beautify": "./vendor/tangible/builder/run beautify"
+    "dev": "tgb dev",
+    "build": "tgb build",
+    "lint": "tgb lint",
+    "beautify": "tgb beautify"
   },
   "devDependencies": {
     "@tangible/builder": "*"
