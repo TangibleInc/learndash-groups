@@ -52,6 +52,19 @@ function get( string $name ) {
 }
 
 /**
+ * Helper for checking value from checkbox (it's false or true, but as string
+ * so we will return a boolean with this function)
+ *
+ * @param      string  $name   The name
+ * 
+ * @return     boolean   
+ */
+function get_boolean( string $name ) {
+  $value = get( $name );
+  return $value === 'true' ? true : false; 
+}
+
+/**
  * Get the complete key of the setting (used for saving it)
  *
  * @param      string  $name   The name

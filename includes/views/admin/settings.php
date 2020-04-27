@@ -2,26 +2,39 @@
 
 use Tangible\LearnDashGroups\Modules\Settings as settings;
 
-$redirect_type = settings\get('redirect-type');
-$redirect_field_name = settings\field_name('redirect-type');
 ?>
 
 <div class="tangible-plugin-settings-tab-license">
     
   <h3><?= __( 'Settings', 'ld-groups' ); ?></h3>
+
+  
+  <div class="ttge-settings-container">
     
-  <div class="setting-row">
-    <label for="<?= $redirect_field_name ?>">
-      <p style="margin:0;"><?= __( 'Defines the behaviour if the user isn’t allowed to access the group.', 'ld-groups' ); ?></p>    
-    </label>
-    <select name="<?= $redirect_field_name ?>" id="<?= $redirect_field_name ?>" class="postform">
-        <option <?= $redirect_type === '404' ? 'selected' : ''; ?> class="level-0" value="404">
-            <?= __( 'Redirect to the 404 page', 'ld-groups' ); ?>
-        </option>
-        <option <?= $redirect_type === 'home' ? 'selected' : ''; ?> class="level-0" value="home">
-            <?= __( 'Redirect to the home page', 'ld-groups' ); ?>      
-        </option>
-     </select>
+    <h4><?= __( 'Redirection', 'ld-groups' ); ?></h4>
+    
+    <?php settings\select(
+      'redirect-type',
+      [
+        '404' => __( 'Redirect to the 404 page', 'ld-groups' ),
+        'home' => __( 'Redirect to the home page', 'ld-groups' )
+      ],
+      __( 'Defines the behaviour if the user isn’t allowed to access the group.', 'ld-groups' )
+    ); ?>
+
+    <h4><?= __( 'Groups', 'ld-groups' ); ?></h4>
+    
+    <?php settings\checkbox(
+      'comments',
+      __( 'Enable comments on group pages', 'ld-groups' ),
+      __( 'If enabled, comments will use the group settings', 'ld-groups' )
+    ); ?>
+
+    <?php settings\checkbox(
+      'gutenberg',
+      __( 'Enable Gutenberg editor on group pages', 'ld-groups' )
+    ); ?>
+
   </div>
 
   <div class="setting-row">

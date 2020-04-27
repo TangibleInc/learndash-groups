@@ -8,6 +8,7 @@ use Tangible\LearnDashGroups\Modules\Settings as settings;
 
 // Functions for managing settings value
 require_once __DIR__ . '/data.php';
+require_once __DIR__ . '/fields.php';
 
 /**
  * Register the setting pages into the back office
@@ -21,7 +22,6 @@ function register() {
       'settings' => [ 
         'title' => __( 'Settings', 'ld-groups' ),
         'callback' => function () {
-          
           ob_start();
           require_once LearnDashGroups_DIR . 'includes/views/admin/settings.php';
           echo ob_get_clean();

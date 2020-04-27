@@ -1,0 +1,16 @@
+/**
+ * When we force the gutenberg mode for groups, it will cause some conflicts 
+ */
+
+body.ttge-admin-gutenberg-fix {
+
+  #sfwd-header {
+    position: relative !important;
+    height: 118px;
+  }
+
+  .edit-post-layout, 
+  .edit-post-layout.has-fixed-toolbar {
+    padding-top: 118px !important;
+  }
+}

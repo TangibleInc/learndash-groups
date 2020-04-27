@@ -22,11 +22,22 @@ class GroupAccess {
       $this->user = new User();
     }, 10 );
 
-    // Set the visibility of the cpt to true
-    $this->set_groups_to_public();
+    // Modify custom post type
+    $this->modify_groups();
 
     // Restrict access to the users which are into the group
     $this->restrict_group_access();
+  }
+
+  /**
+   * Change default settings of the group custom post type
+   */
+  public function modify_groups() {
+
+    // Possibility to display groups on the frontend
+    add_filter( 'learndash-cpt-options', [$this, 'set_groups_to_public'], 10, 2 );
+    add_action( 'the_posts', [$this, 'set_comments'], 10 );
+    add_filter( 'use_block_editor_for_post_type', [$this, 'set_editor'], 20, 2 );
   }
 
   /**
@@ -44,11 +55,11 @@ class GroupAccess {
    */
   public function not_found_redirection() {
 
-      global $wp_query;
-      $wp_query->set_404();
-      status_header( 404 );
-      get_template_part( 404 );
-      exit();
+    global $wp_query;
+    $wp_query->set_404();
+    status_header( 404 );
+    get_template_part( 404 );
+    exit();
   }
 
   /**
@@ -67,25 +78,71 @@ class GroupAccess {
   /**
    * Set student group to public
    */
-  private function set_groups_to_public() {
+  public function set_groups_to_public( $args, $post_type ) {
 
-    add_filter( 'learndash-cpt-options', function ( $args, $post_type ) {
+    if ( $post_type !== 'groups' ) return $args;
 
-      if ( $post_type !== 'groups' ) return $args;
+    $args = array_merge($args, [
+      'public'             => true,
+      'show_in_nav_menus'  => true,
+      'has_archive'        => true,
+      'publicly_queryable' => true,
+      'exclude_from_search'=> false
+    ]);
 
-      $args = array_merge($args, [
-        'public'             => true,
-        'show_in_nav_menus'  => true,
-        'has_archive'        => true,
-        'publicly_queryable' => true,
-        'exclude_from_search'=> false
-      ]);
+    if( settings\get_boolean('comments') ) {
+      $args['supports'][] = 'comments';
+    }
 
-      $args['capabilities']['read_post'] = 'read_post';
+    if( settings\get_boolean('gutenberg') ) {
+      $args['supports'][] = 'editor';
+      $args['show_in_rest'] = true;
+      $args['rewrite'] = ['slug' => 'group'];
+    }
 
-      return $args;
+    $args['capabilities']['read_post'] = 'read_post';
 
-    }, 10, 2);
+    return $args;
+  }
+
+  /**
+   * Remove comment on old post if there is already some
+   *
+   * @param      array  $posts  The posts
+   */
+  public function set_comments( $posts ) {
+   
+    if( !is_single() ) return $posts;
+    if( $posts[0]->post_type !== 'groups' ) return $posts; 
+    if( settings\get_boolean('comments') ) return $posts;
+      
+    $posts[0]->comment_status = 'closed';
+    $posts[0]->ping_status    = 'closed';
+    $posts[0]->comment_count  = 0;
+
+    return $posts;  
+  }
+
+  /**
+   * Sets the editor according to the settings (gutenberg or classic)
+   *
+   * @param      boolean  $can_edit   Indicates if edit
+   * @param      string   $post_type  The post type
+   *
+   * @return     boolean
+   */
+  public function set_editor( $can_edit, $post_type ) {
+
+    if( $post_type !== 'groups' ) return $can_edit; 
+
+    if( !settings\get_boolean('gutenberg') ) return $can_edit;
+    
+    add_filter( 'admin_body_class', function( $classes ) {
+      $classes .= ' ttge-admin-gutenberg-fix';
+      return $classes;
+    });
+
+    return true;
   }
 
   /**
@@ -101,7 +158,7 @@ class GroupAccess {
 
       if ( !is_singular( 'groups' ) ) return;
 
-      $group_id = (int) get_queried_object_id();
+      $group_id = get_queried_object_id();
 
       if ( $this->user->is_in_group( $group_id ) ) return;
 
@@ -127,14 +184,12 @@ class GroupAccess {
 
       if ( !is_singular( 'groups' ) ) return $content;
 
-      $group_id = (int) get_queried_object_id();
+      $group_id = get_queried_object_id();
 
-      if ( ! $this->user->is_in_group( $group_id ) ) {
-        $content = __( 'You are not authorized to access to this student group', 'ld-groups' );
-        exit();
-      }
-
-      return $content;
+      if( $this->user->is_in_group( $group_id ) ) return $content;
+        
+      $content = __( 'You are not authorized to access to this student group', 'ld-groups' );
+      exit();
     });
 
   }
