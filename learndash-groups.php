@@ -3,7 +3,7 @@
  * Plugin Name: Groups Extended for LearnDash
  * Plugin URI: https://tangibleplugins.com
  * Description: Groups Extended for LearnDash is a free plugin developed by TangiblePlugins that allows you to display a group page only to users in the group, providing a space to  display group-related content.
- * Version: 0.0.2
+ * Version: 0.0.3
  * Author: Team Tangible
  * Author URI: https://teamtangible.com/
  * Text Domain: ld-groups
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
-define( 'LearnDashGroups_VER', '0.0.2' );
+define( 'LearnDashGroups_VER', '0.0.3' );
 define( 'LearnDashGroups_FILE', __FILE__ );
 define( 'LearnDashGroups_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LearnDashGroups_URL', plugins_url( '/', __FILE__ ) );

@@ -16,6 +16,15 @@ Groups Extended for LearnDash is a free plugin developed by Tangible Plugins tha
 
 == Changelog ==
 
+= 0.0.3 =
+
+Release Date: 2020-04-30
+
+- Groups: Adds the possibility to use gutenberg on groups
+- Groups: Adds the possibility to use comments on groups
+- Shortcode: Improve user groups shortcode
+- Shortcode: Change CSS prefix
+
 = 0.0.2 =
 
 Release Date: 2020-03-24
