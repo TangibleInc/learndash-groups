@@ -27,6 +27,18 @@ class GroupAccess {
 
     // Restrict access to the users which are into the group
     $this->restrict_group_access();
+
+	  /**
+	   * Flush rewrite rules if the flag exists,
+	   * and then remove the flag. Priority 20 - so, after CPT registered
+	   */
+
+	  add_action( 'init', function () {
+		  if ( get_option( 'ttlg_flush_rewrite_rules_flag' ) ) {
+			  flush_rewrite_rules();
+			  delete_option( 'ttlg_flush_rewrite_rules_flag' );
+		  }
+	  }, 20 );
   }
 
   /**

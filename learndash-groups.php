@@ -39,6 +39,10 @@ class LearnDashGroups {
     require_once LearnDashGroups_DIR . 'includes/extensions/index.php';
     require_once LearnDashGroups_DIR . 'includes/modules/index.php';
 
+	  // activation / deactivation
+	  register_activation_hook( __FILE__, [ $this,'ttlg_activate' ] );
+	  register_deactivation_hook( __FILE__, [ $this,'ttlg_deactivate' ] );
+
     add_action( tangible_plugin_framework()->ready, [$this, 'register'] );
     new Plugin();
   }
@@ -81,6 +85,22 @@ class LearnDashGroups {
 
       $this->framework = $framework;
   }
+
+	/**
+	 * Plugin Activation - flush rewrite rules flag, we need it because adding
+	 */
+	function ttlg_activate() {
+		if ( ! get_option( 'ttlg_flush_rewrite_rules_flag' ) ) {
+			add_option( 'ttlg_flush_rewrite_rules_flag', true );
+		}
+	}
+	/**
+	 * Plugin Deactivation - just flush rewrite rules
+	 */
+	function ttlg_deactivate() {
+		flush_rewrite_rules();
+	}
+
 }
 
 /**
