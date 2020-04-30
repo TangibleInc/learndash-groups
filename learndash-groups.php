@@ -87,7 +87,7 @@ class LearnDashGroups {
   }
 
 	/**
-	 * Plugin Activation - flush rewrite rules flag, we need it because adding
+	 * Plugin Activation - flush rewrite rules flag, we need it because of adding 'group' slug for LD Group access
 	 */
 	function ttlg_activate() {
 		if ( ! get_option( 'ttlg_flush_rewrite_rules_flag' ) ) {
