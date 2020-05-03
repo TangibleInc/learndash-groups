@@ -16,6 +16,14 @@ Groups Extended for LearnDash is a free plugin developed by Tangible Plugins tha
 
 == Changelog ==
 
+
+= 0.0.4 =
+
+Release Date: 2020-05-03
+
+- Groups: Flush rewrite rules on activation
+- Groups: Fix issue when deactivate Gutenberg editor 
+
 = 0.0.3 =
 
 Release Date: 2020-04-30
