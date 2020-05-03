@@ -27,6 +27,18 @@ class GroupAccess {
 
     // Restrict access to the users which are into the group
     $this->restrict_group_access();
+
+	  /**
+	   * Flush rewrite rules if the flag exists,
+	   * and then remove the flag. Priority 20 - so, after CPT registered
+	   */
+
+	  add_action( 'init', function () {
+		  if ( get_option( 'ttlg_flush_rewrite_rules_flag' ) ) {
+			  flush_rewrite_rules();
+			  delete_option( 'ttlg_flush_rewrite_rules_flag' );
+		  }
+	  }, 20 );
   }
 
   /**
@@ -97,9 +109,10 @@ class GroupAccess {
     if( settings\get_boolean('gutenberg') ) {
       $args['supports'][] = 'editor';
       $args['show_in_rest'] = true;
-      $args['rewrite'] = ['slug' => 'group'];
+      //$args['rewrite'] = ['slug' => 'group'];
     }
-
+    // If we move here - it fixes that when 'gutenberg' is off the 'rewrite' slug 'group' turns to the default permastruct slug ($post_type key) : 'groups'.
+	  $args['rewrite'] = ['slug' => 'group'];
     $args['capabilities']['read_post'] = 'read_post';
 
     return $args;
