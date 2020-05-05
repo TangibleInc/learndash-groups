@@ -35,6 +35,20 @@ use Tangible\LearnDashGroups\Modules\Settings as settings;
       __( 'Enable Gutenberg editor on group pages', 'ld-groups' )
     ); ?>
 
+    <?php
+	    settings\image_upload(
+	      'default-picture',
+        'picture',
+        __( 'Choose Default LearnDash Group Profile photo:', 'ld-groups' )
+      ); ?>
+
+	  <?php
+		  settings\image_upload(
+		    'default-banner',
+        'banner',
+        __( 'Choose Default LearnDash Group Cover photo', 'ld-groups' )
+      ); ?>
+
   </div>
 
   <div class="setting-row">

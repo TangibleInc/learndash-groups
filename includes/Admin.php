@@ -44,6 +44,14 @@ class Admin {
     add_action( 'admin_enqueue_scripts', function() {
       wp_enqueue_script( 'ttlg-admin', LearnDashGroups_URL . 'assets/build/admin.min.js' );
       wp_enqueue_style( 'ttlg-admin', LearnDashGroups_URL . 'assets/build/admin.min.css' );
+
+	    wp_localize_script( 'ttlg-admin', 'ImageUpload',
+		    [
+			    'media_modal_title' => __( 'Select an image to upload', 'ld-groups' ),
+			    'media_modal_button' => __( 'Use this image', 'ld-groups' ),
+			    'remove_button_confirm' => __( 'Are you sure?', 'ld-groups' ),
+		    ]
+	    );
     });
 
     /**
@@ -51,7 +59,7 @@ class Admin {
      */
     add_action( 'save_post', function( $post_id ) {
 
-      if ( empty( $_POST ) || ! array_key_exists( 'ld-group-pictures', $_POST ) ) return $post_id;
+	    if ( empty( $_POST ) || ! array_key_exists( 'ld-group-pictures', $_POST ) ) return $post_id;
 
       if ( ! wp_verify_nonce( $_POST['ld-group-pictures'], 'save_post' ) ) return $post_id;
 

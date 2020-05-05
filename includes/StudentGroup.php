@@ -5,6 +5,7 @@ namespace Tangible\LearnDashGroups;
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
 use Tangible\LearnDashGroups\Utils as utils;
+use Tangible\LearnDashGroups\Modules\Settings as settings;
 
 class StudentGroup {
 
@@ -26,22 +27,25 @@ class StudentGroup {
   public function update_settings( $key, $value ) {
 
     if ( get_post_meta( $this->id, 'ttlg-' . $key . '-settings', false ) ) {
-        update_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value );
+      update_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value );
     } else {
-        add_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value, true );
+      add_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value, true );
     }
   }
 
   /**
    * Return a setting
    *
-   * @param  string $key      This can be : comment, global, studentpost or moderate
+   * @param  string $key   This can be : comment, global, studentpost or moderate
    *
    * @return bool
    */
   public function get_setting( $key ) {
 
-    $settings = get_post_meta( $this->id, 'ttlg-' . $key . '-settings', true );
+	  $group_meta_image    = get_post_meta( $this->id, 'ttlg-' . $key . '-settings', true );
+	  $group_default_image = settings\get('default-' . $key );
+
+    $settings = ( is_admin() ) ? $group_meta_image : ( ( ' ' !== $group_meta_image  ) ? $group_meta_image : $group_default_image );
 
     // Picture and banner aren't boolean
     if ( $key === 'picture' || $key === 'banner' ) $settings = (int) $settings;
@@ -125,6 +129,7 @@ class StudentGroup {
    * @return     string  (html)
    */
   public function get_picture() {
+
     $attachment_id = $this->get_setting( 'picture' );
     return wp_get_attachment_image( $attachment_id, 'full', false, ['class' => 'ttlg-group-picture'] );
   }
@@ -151,4 +156,5 @@ class StudentGroup {
 
     return $response;
   }
+
 }
