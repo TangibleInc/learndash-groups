@@ -37,14 +37,14 @@ use Tangible\LearnDashGroups\Modules\Settings as settings;
 
     <?php
 	    settings\image_upload(
-	      'ttlg-settings-default-picture',
+	      'default-picture',
         'picture',
         __( 'Choose Default LearnDash Group Profile photo:', 'ld-groups' )
       ); ?>
 
 	  <?php
 		  settings\image_upload(
-		    'ttlg-settings-default-banner',
+		    'default-banner',
         'banner',
         __( 'Choose Default LearnDash Group Cover photo', 'ld-groups' )
       ); ?>

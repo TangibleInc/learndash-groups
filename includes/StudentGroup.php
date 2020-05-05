@@ -27,9 +27,9 @@ class StudentGroup {
   public function update_settings( $key, $value ) {
 
     if ( get_post_meta( $this->id, 'ttlg-' . $key . '-settings', false ) ) {
-        update_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value );
+      update_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value );
     } else {
-        add_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value, true );
+      add_post_meta( $this->id, 'ttlg-' . $key . '-settings', $value, true );
     }
   }
 
@@ -43,7 +43,7 @@ class StudentGroup {
   public function get_setting( $key ) {
 
 	  $group_meta_image    = get_post_meta( $this->id, 'ttlg-' . $key . '-settings', true );
-	  $group_default_image = settings\get('ttlg-settings-default-' . $key );
+	  $group_default_image = settings\get('default-' . $key );
 
     $settings = ( is_admin() ) ? $group_meta_image : ( ( ' ' !== $group_meta_image  ) ? $group_meta_image : $group_default_image );
 
