@@ -3,11 +3,11 @@ export const initPluginSettings = () => {
   let $ = jQuery
   var file_frame;
 
-  $('.ttlg-upload-file-image').on('click', function( event ){
+  $('.ttge-upload-file-image').on('click', function( event ){
 
     event.preventDefault()
 
-    var $w = $(this).parents('.ttlg-image-preview-wrapper')
+    var $w = $(this).parents('.ttge-image-preview-wrapper')
 
     // Create the media frame.
     file_frame = wp.media.frames.file_frame = wp.media({
@@ -33,9 +33,9 @@ export const initPluginSettings = () => {
 
         // Do something with attachment.id and attachment.url here
         $w.css('background-image', 'url("' + attachment.url + '")').css('background-size', 'cover')
-        $w.find('.ttlg-settings-default').val(attachment.id)
-        $w.find('.ttlg-remove-file-image').css('display', 'inline-block')
-        $w.find('.ttlg-upload-file-image').css('display', 'none')
+        $w.find('.ttge-settings-default').val(attachment.id)
+        $w.find('.ttge-remove-file-image').css('display', 'inline-block')
+        $w.find('.ttge-upload-file-image').css('display', 'none')
       }
     })
 
@@ -44,17 +44,17 @@ export const initPluginSettings = () => {
   })
 
   // The 'Remove' button
-  $('.ttlg-remove-file-image').click(function(event) {
+  $('.ttge-remove-file-image').click(function(event) {
 
     event.preventDefault()
 
     var answer = confirm(ImageUpload.remove_button_confirm)
     if (answer == true) {
-      var $w = $(this).parents('.ttlg-image-preview-wrapper')
+      var $w = $(this).parents('.ttge-image-preview-wrapper')
       $w.css('background-image', 'none')
-      $w.find('.ttlg-settings-default').val('')
+      $w.find('.ttge-settings-default').val('')
       $(this).css('display', 'none' )
-      $w.find('.ttlg-upload-file-image').css('display', 'inline-block')
+      $w.find('.ttge-upload-file-image').css('display', 'inline-block')
     }
     return false
   })

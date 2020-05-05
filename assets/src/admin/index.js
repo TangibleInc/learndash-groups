@@ -15,7 +15,7 @@ jQuery(() => {
   /**
    * On the plugins settings
    */
-  if (d.getElementById('ttlg-default-group-images')) {
+  if (d.getElementById('ttge-default-group-images')) {
     initPluginSettings()
   }
 
