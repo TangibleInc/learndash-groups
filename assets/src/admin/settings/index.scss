@@ -11,7 +11,9 @@
   }
 }
 
-
+.tangible-plugin-settings-tab {
+  max-width: 960px;
+}
 .ttge-settings-container {
 
   .ttge-setting-row-checkbox {
@@ -83,5 +85,48 @@
     display: flex;
     max-width: 700px;
     justify-content: space-between;
+  }
+
+  .ttlg-default-group-images{
+    margin-bottom:30px;
+  }
+
+  .ttlg-image-preview-wrapper{
+    border:solid 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    &.type-picture{
+      height:200px;
+      width: 200px;
+    }
+    &.type-banner{
+      height:250px;
+      width: 100%;
+    }
+
+    .ttlg-buttons-wrapper{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .button-secondary{
+      margin:10px;
+    }
+
+    .ttlg-remove-file-image{
+      display: none;
+      &.has-image{
+        display: inline-block;
+      }
+    }
+
+    .ttlg-upload-file-image{
+      display: inline-block;
+      &.has-image{
+        display: none;
+      }
+    }
   }
 }
