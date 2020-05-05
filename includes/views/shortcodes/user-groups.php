@@ -7,7 +7,9 @@
       <a href="<?= get_the_permalink( $group->id ); ?>">
         <div class="ttge-groups-list-item-inner">
           <div class="ttge-groups-list-item-title">
-            <img class="ttge-groups-list-item-image" src="<?= $group->get_picture_link() ?>"/>
+            <?php if($group -> get_picture_link()) {?>
+              <img class="ttge-groups-list-item-image" src="<?= $group -> get_picture_link() ?>"/>
+            <?php } ?>
             <div class="ttge-groups-list-item-title-text"><?= get_the_title( $group->id ); ?></div>
           </div>
           <div class="ttge-groups-list-item-leaders">

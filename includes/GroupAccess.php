@@ -109,9 +109,8 @@ class GroupAccess {
     if( settings\get_boolean('gutenberg') ) {
       $args['supports'][] = 'editor';
       $args['show_in_rest'] = true;
-      //$args['rewrite'] = ['slug' => 'group'];
     }
-    // If we move here - it fixes that when 'gutenberg' is off the 'rewrite' slug 'group' turns to the default permastruct slug ($post_type key) : 'groups'.
+
 	  $args['rewrite'] = ['slug' => 'group'];
     $args['capabilities']['read_post'] = 'read_post';
 
