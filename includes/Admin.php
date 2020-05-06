@@ -71,7 +71,7 @@ class Admin {
       $group = new StudentGroup( $post_id );
       $group->save_picture();
       $group->save_banner();
-      
+
       if( isset($_POST['ttge-remove-file-picture']) && $_POST['ttge-remove-file-picture'] === 'on' ) {
         $group->update_settings( 'picture', ' ');
       }
@@ -115,11 +115,6 @@ class Admin {
 
     $group = new StudentGroup( get_the_ID() );
 
-    ob_start();
     require_once LearnDashGroups_DIR . 'includes/views/admin/meta-boxes/pictures.php';
-    $content = ob_get_clean();
-
-    echo $content;
   }
 }
-
