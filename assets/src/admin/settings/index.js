@@ -1,4 +1,4 @@
-export const initPluginSettings = () => {
+export const initPluginSettingsMetaboxes = () => {
 
   let $ = jQuery
   var file_frame;

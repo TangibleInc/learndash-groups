@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) or die( 'Nothing to see here' ); ?>
 
-<div id="ttge-default-group-images" class="ttge-default-group-images">
+<div id="<?php echo $wrapper_id_class ?>" class="<?php echo $wrapper_id_class ?>">
 	<h4><?php echo $label ?> </h4>
 	<div id="ttge-image-preview-wrapper-<?php echo $type ?>" class="ttge-image-preview-wrapper type-<?php echo $type ?>"  style=" background-image:url('<?php echo wp_get_attachment_url($value) ?>'); background-size:cover; ">
 		<div class="ttge-buttons-wrapper">
