@@ -17,6 +17,13 @@ Groups Extended for LearnDash is a free plugin developed by Tangible Plugins tha
 == Changelog ==
 
 
+= 0.0.5 =
+
+Release Date: 2020-05-07
+
+- Groups: Add possibility to set a default banner/image
+- Media upload: Switch to wp.media upload API
+
 = 0.0.4 =
 
 Release Date: 2020-05-03
