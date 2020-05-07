@@ -5,6 +5,7 @@ namespace Tangible\LearnDashGroups\Modules\Settings;
 defined( 'ABSPATH' ) or die( 'Nothing to see here' );
 
 use Tangible\LearnDashGroups\Modules\Settings as settings;
+use Tangible\LearnDashGroups\StudentGroup;
 
 /**
  * Render select settings field
@@ -31,15 +32,26 @@ function select( string $key, array $options, string $label = '' ) {
  */
 function image_upload( string $key, string $type, string $label = '', string $context = 'plugin_settings' ) {
 
+  global $post;
+
   if( !in_array( $context, ['plugin_settings', 'meta_boxes'] ) ) return '';
 
 	wp_enqueue_media();
-	$value = settings\get( $key );
-	$has_image = ($value)? ' has-image' : '' ;
-	if( $context = 'plugin_settings' ) {
-		$name = settings\field_name( $key );
-	}
 
+	$value = '';
+	$wrapper_class = '';
+	if( $context === 'plugin_settings' ) {
+		$value = settings\get( $key );
+		$name = settings\field_name( $key );
+		$wrapper_id_class = 'ttge-default-group-images';
+
+	} elseif( $context === 'meta_boxes' ){
+		$group = new StudentGroup( $post -> ID );
+		$value = $group -> get_setting( $type );
+		$name =  $key;
+		$wrapper_id_class = 'ttge-group-images';
+  }
+	$has_image = ( $value ) ? ' has-image' : '' ;
 	require LearnDashGroups_DIR . 'includes/views/admin/fields/image-upload.php';
 }
 
