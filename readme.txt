@@ -17,6 +17,12 @@ Groups Extended for LearnDash is a free plugin developed by Tangible Plugins tha
 == Changelog ==
 
 
+= 0.0.6 =
+
+Release Date: 2020-06-12
+
+- Issue: Remove php notices on empty queries
+
 = 0.0.5 =
 
 Release Date: 2020-05-07
