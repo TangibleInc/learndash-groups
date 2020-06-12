@@ -123,8 +123,8 @@ class GroupAccess {
    * @param      array  $posts  The posts
    */
   public function set_comments( $posts ) {
-   
-    if( !is_single() ) return $posts;
+
+    if( !is_single() || empty($posts) ) return $posts;
     if( $posts[0]->post_type !== 'groups' ) return $posts; 
     if( settings\get_boolean('comments') ) return $posts;
       
